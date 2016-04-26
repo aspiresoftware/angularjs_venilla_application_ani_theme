@@ -17,5 +17,6 @@ gulp.task('images', function() {
       interlaced: true
     })))
     .pipe(gulp.dest(path.join(conf.paths.dist, 'assets', 'images')))
+    .pipe(gulp.dest(path.join(conf.paths.tmp, 'assets', 'images')))
     .pipe($.size());
 });

@@ -15,12 +15,20 @@
     login: '/user/login/?format=json'
   })
   .constant('PAGE_URL', {
-    root: '/',
-    error404: '/404'
+    login: '/login',
+    error404: '/404',
+    root: '',
+    dashboard: '/dashboard',
+    overview: '/overview',
+    reports: '/reports'
   })
   .constant('TEMPLATE_URL', {
     login: 'app/login/login.html',
-    error404: 'app/common/html/404.html'
+    error404: 'app/common/html/404.html',
+    base: 'app/base/base.html',
+    dashboard: 'app/dashboard/dashboard.html',
+    overview: 'app/dashboard/overview/overview.html',
+    reports: 'app/dashboard/reports/reports.html'
   })
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',

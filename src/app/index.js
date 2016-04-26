@@ -5,6 +5,7 @@
     'ngLodash',
     'ngResource',
     'ui.router',
-    'angular-cache'
+    'angular-cache',
+    'ngAnimate'
   ]);
 })();

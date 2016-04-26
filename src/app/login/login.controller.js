@@ -5,6 +5,7 @@
   function loginController(
     $scope,
     modelFactory,
+    $location,
     User,
     LoginService,
     Session
@@ -12,7 +13,15 @@
 
     $scope.user = modelFactory.create('user', User);
 
-    $scope.login = login;
+    $scope.login  = login;
+    $scope.submit = submit;
+
+    function submit() {
+
+      $location.path('/dashboard');
+
+      return false;
+    }
 
     function login() {
       var authPromise = LoginService.authentication($scope.user);
