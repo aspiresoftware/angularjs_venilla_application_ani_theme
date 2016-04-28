@@ -40,13 +40,27 @@
       return $resource(config.url, {}, {
         GET: {
           method: 'GET',
-          isArray: true
+          transformResponse: function(data) {
+                    var response = angular.fromJson(data);
+
+                    if (response.length) {
+                        // the response is an array, so convert it into an object
+                        var object = {};
+                        for( var i = 0; i < response.length; i += 1) {
+                            object[i] = response[i];
+                        }
+                        return object;
+                    } else {
+                        return response;
+                    }
+                }
         },
         POST: {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': config.headers.Authorization
           }
         },
         PUT: {
@@ -234,7 +248,7 @@
 
       if (angular.isObject(config.data)) {
         angular.extend(params, config.data);
-        config.data   = Utility.camelToSnakeCase(config.data);
+        // config.data   = Utility.camelToSnakeCase(config.data);
       }
       headers = addAuth(config, params, headers);
 

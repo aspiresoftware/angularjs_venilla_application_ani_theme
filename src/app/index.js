@@ -6,6 +6,8 @@
     'ngResource',
     'ui.router',
     'angular-cache',
-    'ngAnimate'
+    'ngAnimate',
+    'ngMessages',
+    'angular-progress-button-styles'
   ]);
 })();

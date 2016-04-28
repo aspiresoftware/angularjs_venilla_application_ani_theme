@@ -23,27 +23,52 @@
         templateUrl: TEMPLATE_URL.login,
         parent: 'base',
         controller: 'LoginController',
-        controllerAs: 'loginController'
+        controllerAs: 'loginController',
+        authenticate: false
       })
       .state('404', {
         url: PAGE_URL.error404,
-        templateUrl: TEMPLATE_URL.error404
+        templateUrl: TEMPLATE_URL.error404,
+        authenticate: false
       })
       .state('dashboard', {
         url: PAGE_URL.dashboard,
         parent: 'base',
         controller: 'DashboardCtrl',
-        templateUrl: TEMPLATE_URL.dashboard
+        templateUrl: TEMPLATE_URL.dashboard,
+        authenticate: false
       })
       .state('overview', {
         url: PAGE_URL.overview,
         parent: 'dashboard',
-        templateUrl: TEMPLATE_URL.overview
+        templateUrl: TEMPLATE_URL.overview,
+        authenticate: false
       })
       .state('reports', {
         url: PAGE_URL.reports,
         parent: 'dashboard',
-        templateUrl: TEMPLATE_URL.reports
+        templateUrl: TEMPLATE_URL.reports,
+        authenticate: false
+      })
+      .state('changepassword', {
+        url: PAGE_URL.changepassword,
+        parent: 'dashboard',
+        templateUrl: TEMPLATE_URL.changepassword,
+        authenticate: false,
+        controller:'ChangePasswordController'
+      })
+      .state('register', {
+        url: PAGE_URL.register,
+        templateUrl: TEMPLATE_URL.register,
+        authenticate: false,
+        controller:'RegisterControler'
+      })
+      .state('users', {
+        url: PAGE_URL.showusers,
+        templateUrl: TEMPLATE_URL.showusers,
+        parent: 'dashboard',
+        authenticate: false,
+        controller:'ShowUserController'
       });
     $urlRouterProvider.otherwise(PAGE_URL.login);
   }

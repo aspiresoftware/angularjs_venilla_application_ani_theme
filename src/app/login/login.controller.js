@@ -4,6 +4,8 @@
 
   function loginController(
     $scope,
+    $state,
+    $q,
     modelFactory,
     $location,
     User,
@@ -24,9 +26,15 @@
     }
 
     function login() {
-      var authPromise = LoginService.authentication($scope.user);
-      /*return authPromise;*/
+      var deferred, authPromise;
+      if($scope.loginForm.$invalid) {
+        deferred = $q.defer();
+
+        return $q.reject();
+      }
+      authPromise = LoginService.authentication($scope.user);
       authPromise.then(loginSuccess, failure);
+      return authPromise;
     }
 
     function loginSuccess (result) {
@@ -36,6 +44,7 @@
       $scope.user.status = result.status;
       //Create a new user session
       Session.create($scope.user);
+      $state.go('dashboard');
     }
 
     function failure (error) {

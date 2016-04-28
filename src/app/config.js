@@ -3,7 +3,7 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    host: 'http://192.168.1.29:80/api/v1',
+    host: 'http://192.168.1.12:3001/api',
     username: 'username',
     cache: 'appCache',
     paramCache: 'appParamCache',
@@ -12,7 +12,12 @@
     sessionName: 'myAppSession'
   })
   .constant('REST_URL', {
-    login: '/user/login/?format=json'
+    login: '/authenticate',
+    changePassword: '/change/password',
+    'registerUser': '/user',
+    'getUsers':'/users',
+    'updateUser':'/user/:id',
+    'deleteUser':'/user/:id'
   })
   .constant('PAGE_URL', {
     login: '/login',
@@ -20,7 +25,10 @@
     root: '',
     dashboard: '/dashboard',
     overview: '/overview',
-    reports: '/reports'
+    reports: '/reports',
+    changepassword:'/changepassword',
+    register: '/register',
+    showusers: '/users'
   })
   .constant('TEMPLATE_URL', {
     login: 'app/login/login.html',
@@ -28,7 +36,10 @@
     base: 'app/base/base.html',
     dashboard: 'app/dashboard/dashboard.html',
     overview: 'app/dashboard/overview/overview.html',
-    reports: 'app/dashboard/reports/reports.html'
+    reports: 'app/dashboard/reports/reports.html',
+    changepassword: 'app/changepassword/changepassword.html',
+    register: 'app/register/register.html',
+    showusers: 'app/crud/show-user/show-user.html'
   })
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',

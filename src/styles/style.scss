@@ -1,1 +1,56 @@
 @import "login";
+.messages {
+  font-size: smaller;
+  color: red;
+}
+.progress-button {
+    position: relative;
+    display: inline-block;
+    padding: 0 40px;
+    padding-top: 0px;
+    padding-right: 40px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    outline: none;
+    border: none;
+    background: rgb(60, 162, 224);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+    line-height: 3;
+}
+.progress-login {
+    text-transform: none;
+    font-size: 18px;
+    line-height: 45px;
+    padding: 0 25px;
+    padding-top: 0px;
+    padding-right: 25px;
+    padding-bottom: 0px;
+    padding-left: 25px;
+}
+.progress-button .progress {
+    background: rgb(38, 152, 221);
+}
+.progress-button .progress-inner {
+    position: absolute;
+    left: 0;
+    background: rgb(31, 131, 192);
+}
+.progress-button .content::before, .progress-button .content::after {
+    color: rgb(31, 131, 192);
+}
+.progress-login .content::before, .progress-login .content::after {
+    color: rgb(255, 255, 255);
+}
+a {
+    color: rgb(60, 162, 224);
+    text-decoration: none;
+
+}
+.panel-control a {
+    display: inline-block;
+    padding: 3px;
+    cursor: pointer;
+}

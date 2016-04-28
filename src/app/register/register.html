@@ -1,0 +1,77 @@
+<div class="ng-scope">
+  <div class="login-page ng-scope">
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+        <img src="assets/images/flat-avatar.png" class="user-avatar">
+        <h1>Ani Theme
+        </h1>
+        <form role="form" name="registerForm">
+          <div class="form-content">
+            <div class="form-group">
+              <input type="text"
+              class="form-control input-underline input-lg"
+              placeholder="First Name"
+              name="firstName"
+              data-ng-model="registerModel.firstName"
+              required>
+            </div>
+            <div class="form-group">
+              <input type="text"
+              class="form-control input-underline input-lg"
+              placeholder="Last Name"
+              name="lastName"
+              data-ng-model="registerModel.lastName"
+              required>
+            </div>
+            <div class="form-group">
+              <input type="email"
+              class="form-control
+              input-underline
+              input-lg"
+              placeholder="Email"
+              name="username"
+              data-ng-model="registerModel.username"
+              required>
+            </div>
+            <div class="form-group">
+              <input type="password"
+              class="form-control
+              input-underline
+              input-lg"
+              name="password"
+              data-ng-model="registerModel.password"
+              placeholder="Password"
+              required>
+            </div>
+            <!-- <div class="form-group">
+              <input type="password"
+              class="form-control
+              input-underline
+              input-lg"
+              name="confirmPassword"
+              data-ng-model="registerModel.confirmPassword"
+              placeholder="Repeat Password"
+              compare-to="registerModel.password"
+              required>
+              <div
+              ng-messages="registerForm.confirmPassword.$error"
+              ng-if="registerForm.confirmPassword.$dirty">
+                 <div ng-messages-include="app/common/html/messages.html"></div>
+                                         </div>
+            </div> -->
+          </div>
+          <button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login" progress-button="registerUser()">
+              Register
+          </button>
+          &nbsp;
+          <a ui-sref="login" >
+            <button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-button ">
+            <span > Login Page
+            </span>
+            </button>
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
