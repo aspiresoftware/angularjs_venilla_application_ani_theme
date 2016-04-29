@@ -6,12 +6,15 @@
     $scope,
     $state,
     $q,
-    modelFactory,
+    $timeout,
     $location,
+    modelFactory,
+    ALERT_MESSAGE,
     ShowUserService
     ) {
       //Variable Declaration
       $scope.usersList = [];
+      $scope.growlNotifications= {};
 
       //Initially retrieve the users list
       $scope.getUsers = getUsers();
@@ -29,14 +32,22 @@
       }
 
       function failure(error) {
-        console.log(error + 'failure');
+        console.log(JSON.stringify(error) + 'failure');
       }
 
-      function deactivateUser(user) {
-        ShowUserService.deleteUser(user)
+      function deactivateUser(user, index) {
+        var userid = {};
+        var i;
+        userid.id = user.id;
+        ShowUserService.deleteUser(userid)
         .then(deactivateUserSuccess, failure);
         function deactivateUserSuccess(data) {
-          debugger;
+          $scope.usersList[index] = data;
+           i += index;
+          $scope.growlNotifications[i] = ALERT_MESSAGE.deactivatedUserSuccessfully + data.firstName;
+          $timeout(function(){
+            delete $scope.growlNotifications[i];
+          }, 2000);
         }
       }
   }

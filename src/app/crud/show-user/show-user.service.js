@@ -13,8 +13,8 @@
 
     urls = {
       getUsersUrl: urlTemplate(REST_URL.getUsers, {}, {type: 'get'}),
-      updateUserUrl: urlTemplate(REST_URL.updateUser, {}, {type: 'put'}),
-      deleteUserUrl: urlTemplate(REST_URL.deleteUser, {}, {type: 'delete'})
+      updateUserUrl: urlTemplate(REST_URL.updateUser, {id:':id'}, {type: 'put'}),
+      deleteUserUrl: urlTemplate(REST_URL.deleteUser, {id:':id'}, {type: 'delete'})
     };
 
     showUserService = angular.extend(
@@ -35,8 +35,8 @@
       return DelegatorService.get(urls.getUsersUrl);
     }
 
-    function updateUser (updateUserModel) {
-      return DelegatorService.put(urls.updateUserUrl, updateUserModel);
+    function updateUser (params, updateUserModel) {
+      return DelegatorService.put(urls.updateUserUrl, params, updateUserModel);
     }
 
     function deleteUser (user) {

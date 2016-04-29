@@ -3,7 +3,9 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    host: 'http://192.168.1.12:3001/api',
+    host: 'http://192.168.1.12:3000/api/v1',
+    // host: 'http://192.168.1.12:3002/api/v1',
+    // host: 'http://192.168.1.30:3000/api/v1',
     username: 'username',
     cache: 'appCache',
     paramCache: 'appParamCache',
@@ -28,7 +30,9 @@
     reports: '/reports',
     changepassword:'/changepassword',
     register: '/register',
-    showusers: '/users'
+    showusers: '/users',
+    edituser:'/user/edit/:id',
+    forgotpassword:'/forgotpassword'
   })
   .constant('TEMPLATE_URL', {
     login: 'app/login/login.html',
@@ -39,7 +43,9 @@
     reports: 'app/dashboard/reports/reports.html',
     changepassword: 'app/changepassword/changepassword.html',
     register: 'app/register/register.html',
-    showusers: 'app/crud/show-user/show-user.html'
+    showusers: 'app/crud/show-user/show-user.html',
+    edituser: 'app/crud/edit-user/edit-user.html',
+    forgotpassword: 'app/forgotpassword/forgotpassword.html'
   })
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',
@@ -89,5 +95,8 @@
       ' found. Please correct your email address or create a new account.',
     alredyAssociatedEmail: 'An account is already associated with this email address.' +
       ' Please log in to add this child to your existing account.'
-  });
+  })
+  .constant('ALERT_MESSAGE', {
+    'deactivatedUserSuccessfully':'Succefully deactivated user '
+   });
 })();

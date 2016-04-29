@@ -1,8 +1,8 @@
 (function() {
   angular.module('nd')
-    .factory('LoginService', LoginService);
+    .factory('ForgotPasswordService', ForgotPasswordService);
 
-  function LoginService (
+  function ForgotPasswordService (
     REST_URL,
     DelegatorService,
     urlTemplate,

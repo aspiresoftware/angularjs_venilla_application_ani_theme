@@ -32,6 +32,7 @@
 
         return $q.reject();
       }
+      $scope.user.grantType = 'password';
       authPromise = LoginService.authentication($scope.user);
       authPromise.then(loginSuccess, failure);
       return authPromise;

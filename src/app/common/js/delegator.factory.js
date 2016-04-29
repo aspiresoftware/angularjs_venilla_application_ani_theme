@@ -37,9 +37,12 @@
       /*
       Set header in methods which will come inside config
        */
-      return $resource(config.url, {}, {
+      return $resource(config.url, null,  {
         GET: {
           method: 'GET',
+          headers: {
+           'Authorization': config.headers.Authorization
+          },
           transformResponse: function(data) {
                     var response = angular.fromJson(data);
 
@@ -60,14 +63,22 @@
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': config.headers.Authorization
+            'Authorization': config.headers.Authorization,
           }
         },
         PUT: {
-          method: 'PUT'
+          method: 'PUT',
+          headers: {
+           'Authorization': config.headers.Authorization
+          },
+          params:config.params,
+          data:config.data
         },
         DELETE: {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+           'Authorization': config.headers.Authorization
+          }
         }
       });
     }
@@ -185,8 +196,8 @@
       return http(buildShortcutConfig('POST', url, params, customConfig));
     }
 
-    function put(url, params, customConfig) {
-      return http(buildShortcutConfig('PUT', url, params, customConfig));
+    function put(url, params, data, customConfig) {
+      return http(buildShortcutConfig('PUT', url, params, data, customConfig));
     }
 
     function remove(url, params, customConfig) {
@@ -203,6 +214,9 @@
         data = Utility.pruneEmpty(data);
 
         config.data   = data || {};
+        if (method === 'PUT') {
+          config.params = data || {};
+        }
       } else {
         config.params = data || {};
       }
@@ -243,12 +257,12 @@
 
       if (angular.isObject(config.params)) {
         angular.extend(params, config.params);
-        config.params = Utility.camelToSnakeCase(config.params);
+        config.params = config.params;
       }
 
       if (angular.isObject(config.data)) {
         angular.extend(params, config.data);
-        // config.data   = Utility.camelToSnakeCase(config.data);
+        config.data   = config.data;
       }
       headers = addAuth(config, params, headers);
 

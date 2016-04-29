@@ -1,0 +1,79 @@
+<!--  <div  class="alert alert-success" ng-repeat="(id, notification) in growlNotifications">
+ 	{{notification}}
+ </div> -->
+
+ <div class="conter-wrapper ng-scope" ng-animate="'animate'">
+ 	<div class="col-md-12">
+ 		<div class="panel panel-info">
+ 			<div class="panel-heading">
+ 				<h3 class="panel-title">
+ 					User Name
+ 				</h3>
+ 			</div>
+ 			<div class="panel-body">
+ 				<form class="form-horizontal" name="editUserForm" data-ng-submit="editUser()">
+ 					<div class="form-group">
+ 					<label for="firstName" class="col-sm-2 control-label">
+ 					First Name
+ 					</label>
+ 						<div class="col-sm-10">
+ 							<input type="text"
+ 							class="form-control"
+ 							name="firstName"
+ 							id="firstName"
+ 							required
+ 							data-ng-model="editUserModel.firstName"
+ 							placeholder="First Name">
+ 								<div ng-messages="editUserForm.firstName.$error" ng-if="editUserForm.firstName.$dirty">
+ 									<div ng-messages-include="app/common/html/messages.html"></div>
+ 								</div>
+ 							 </div>
+ 						</div>
+ 						<div class="form-group">
+ 							<label for="lastName" class="col-sm-2 control-label">
+ 							Last Name
+ 							</label>
+ 							<div class="col-sm-10">
+ 								<input type="text"
+ 								class="form-control"
+	 							name="lastName"
+	 							id="lastName"
+	 							required
+ 								data-ng-model="editUserModel.lastName"
+ 								placeholder="Last Name">
+ 								<div ng-messages="editUserForm.lastName.$error" ng-if="editUserForm.lastName.$dirty">
+ 									<div ng-messages-include="app/common/html/messages.html"></div>
+ 								</div>
+ 								 </div>
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="isActivate" class="col-sm-2 control-label">
+ 									Block
+ 								</label>
+ 								<div class="col-sm-10">
+ 									<div class="onoffswitch">
+ 										<input type="checkbox"
+ 										name="isActivate" class="onoffswitch-checkbox" id="isActivate"
+ 										data-ng-checked="editUserModel.isActivate"
+ 										data-ng-model="editUserModel.isActivate"
+ 										>
+ 										<label class="onoffswitch-label" for="isActivate">
+ 											<span class="onoffswitch-inner">
+ 											</span>
+ 											<span class="onoffswitch-switch">
+ 											</span>
+ 										</label>
+ 									</div>
+ 								</div>
+ 							</div>
+ 								<div class="form-group">
+ 									<div class="col-sm-offset-2 col-sm-10">
+ 										<button type="submit" class="btn btn-default" data-ng-disabled="editUserForm.$invalid"
+		
+ 										>Update</button> &nbsp; </div>
+ 									</div>
+ 								</form>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</div>

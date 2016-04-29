@@ -32,6 +32,7 @@
     "bootstrap-btn-outline-rounded": "^0.0.4",
     "angular-animate": "^1.5.5",
     "angular-messages": "^1.5.5",
-    "angular-progress-button-styles": "^0.1.0"
+    "angular-progress-button-styles": "^0.1.0",
+    "icomoon-bower": "icomoon#^0.1.0"
   }
 }

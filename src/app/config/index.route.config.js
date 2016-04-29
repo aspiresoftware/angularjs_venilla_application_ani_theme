@@ -69,6 +69,19 @@
         parent: 'dashboard',
         authenticate: false,
         controller:'ShowUserController'
+      })
+      .state('edituser', {
+        url: PAGE_URL.edituser,
+        templateUrl: TEMPLATE_URL.edituser,
+        parent: 'dashboard',
+        authenticate: false,
+        controller:'EditUserController'
+      })
+      .state('forgotpassword', {
+        url: PAGE_URL.forgotpassword,
+        templateUrl: TEMPLATE_URL.forgotpassword,
+        authenticate: false,
+        controller: 'ForgotPasswordController'
       });
     $urlRouterProvider.otherwise(PAGE_URL.login);
   }
