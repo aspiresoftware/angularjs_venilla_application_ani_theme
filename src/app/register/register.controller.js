@@ -14,6 +14,7 @@ angular.module('nd')
   function RegisterControler($scope,
    $state,
    $q,
+   $sce,
    Register,
    RegisterUserService,
    lodash,
@@ -25,16 +26,17 @@ angular.module('nd')
 
     //Function Declaration
     $scope.registerUser = registerUser;
+    $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">  Username already taken!! </b>');
+    $scope.popoverIsOpen = false;
 
     //TODO: handle the already logged in users
     function registerUser() {
       var deferred,
       registerUserModel,
       registerUserPromise;
+      deferred = $q.defer();
       if ($scope.registerForm.$invalid) {
-        deferred = $q.defer();
-
-        return $q.reject();
+        deferred.reject();
       }
 
       registerUserModel = angular.copy($scope.registerModel, registerUserModel);
@@ -42,15 +44,27 @@ angular.module('nd')
 
       registerUserPromise = RegisterUserService.registerUser(registerUserModel);
       registerUserPromise.then(registerUserSucess, registerUserFailure);
-      return registerUserPromise;
+      function registerUserSucess(data) {
+        if(data.error) {
+          deferred.reject();
+          $scope.popoverIsOpen = true;
+          return;
+        }
+        $state.go('login');
+      }
+      function registerUserFailure() {
+        console.log('error to register user');
+      }
+      return deferred.promise;
     }
 
-    function registerUserSucess() {
-      $state.go('login');
-    }
-    function registerUserFailure() {
-      console.log('error to register user');
-    }
+
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
+    $scope.popup1 = {
+      opened: false
+    };
 
   }
 }());

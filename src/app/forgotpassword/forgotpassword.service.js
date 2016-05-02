@@ -9,13 +9,13 @@
     CachedRequestHandler
     ) {
 
-    var loginService, urls;
+    var forgotPasswordService, urls;
 
     urls = {
-      loginUrl: urlTemplate(REST_URL.login, {}, {type: 'post'})
+      forgotPasswordUrl: urlTemplate(REST_URL.forgotPassword, {}, {type: 'post'})
     };
 
-    loginService = angular.extend(
+    forgotPasswordService = angular.extend(
       {},
       CachedRequestHandler,
       {
@@ -24,21 +24,14 @@
         urls: urls
       },
       {
-        authentication: authentication,
-        refreshToken: refreshToken
+        forgotPassword: forgotPassword
       });
 
-    return loginService;
+    return forgotPasswordService;
 
-    function authentication (user) {
-      return DelegatorService.post(urls.loginUrl, user);
+    function forgotPassword (user) {
+      return DelegatorService.post(urls.forgotPasswordUrl,null, user);
     }
 
-    function refreshToken(refreshTokenValue) {
-      var params  = {grantType: 'accessToken', refreshToken: refreshTokenValue};
-      var config  = {noDelay: true};
-
-      return DelegatorService.post(REST_URL.login, params, config);
-    }
   }
 })();

@@ -12,7 +12,7 @@
     var changePasswordService, urls;
 
     urls = {
-      changePasswordUrl: urlTemplate(REST_URL.changePassword, {}, {type: 'post'})
+      changePasswordUrl: urlTemplate(REST_URL.changePassword, {id:':id'}, {type: 'post'})
     };
 
     changePasswordService = angular.extend(
@@ -27,8 +27,8 @@
 
     return changePasswordService;
 
-    function changePassword (changePasswordModel) {
-      return DelegatorService.post(urls.changePasswordUrl, changePasswordModel);
+    function changePassword (params, changePasswordModel) {
+      return DelegatorService.post(urls.changePasswordUrl, params, changePasswordModel);
     }
   }
 })();

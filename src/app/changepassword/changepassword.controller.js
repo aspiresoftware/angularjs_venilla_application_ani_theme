@@ -25,11 +25,13 @@ angular.module('nd')
     $scope.changePasswordSubmit = changePasswordSubmit;
 
     function changePasswordSubmit() {
-      var dummyChangePasswordModel = {};
+      var dummyChangePasswordModel = {},
+      params = {};
+      params.id = Session.getValue('id');
       dummyChangePasswordModel.username    = Session.username;
-      dummyChangePasswordModel.password    = $scope.changePasswordModel.oldPassword;
-      dummyChangePasswordModel.oldPassword = $scope.changePasswordModel.newPassword;
-      ChangePasswordService.changePassword(dummyChangePasswordModel)
+      dummyChangePasswordModel.newpassword    = $scope.changePasswordModel.oldPassword;
+      dummyChangePasswordModel.oldpassword = $scope.changePasswordModel.newPassword;
+      ChangePasswordService.changePassword(params, dummyChangePasswordModel)
       .then(changePasswordSuccess, changePasswordFailure);
     }
 

@@ -14,20 +14,33 @@
     ) {
       //Variable Declaration
       $scope.usersList = [];
-      $scope.growlNotifications= {};
+      $scope.growlNotifications = {};
+      $scope.maxSize = 5;
+      $scope.totalItems = 3;
+      $scope.currentPage = 1;
+      $scope.itemsPerPage = 3;
 
       //Initially retrieve the users list
-      $scope.getUsers = getUsers();
+      $scope.getUsers = getUsers($scope.currentPage);
 
       //Function Declaration
       $scope.deactivateUser = deactivateUser;
+      $scope.pageChanged    = pageChanged;
 
-      function getUsers() {
-        ShowUserService.getUsers().then(getUsersSuccess,failure);
+      function pageChanged() {
+        console.log('pagechanged' + $scope.currentPage);
+        getUsers($scope.currentPage);
+      }
+
+      function getUsers(currentPage) {
+        ShowUserService.getUsers(currentPage).then(getUsersSuccess,failure);
       }
 
       function getUsersSuccess(data) {
-        $scope.usersList = data.users;
+        $scope.usersList   = data.users;
+        $scope.totalItems  = data.pages * data.users.length;
+        $scope.currentPage = data.currentPage;
+        $scope.itemsPerPage= data.users.length;
         console.log(data + 'success');
       }
 

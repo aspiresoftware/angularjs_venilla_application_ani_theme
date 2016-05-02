@@ -8,7 +8,8 @@
     $timeout,
     $q,
     modelFactory,
-    ForgotPassword
+    ForgotPassword,
+    ForgotPasswordService
     ) {
 
     //Model declaration
@@ -23,13 +24,15 @@
 
     function forgotPasswordAction() {
       var deferred = $q.defer();
-      
-      $timeout(function(){
-        // $scope.forgotPasswordMessages.showConfirmStatus = true;
+      ForgotPasswordService.forgotPassword($scope.forgotPasswordModel).then(function () {
+        $scope.forgotPasswordMessages.showConfirmStatus = true;
+        deferred.resolve();
+      },
+      function() {
         $scope.forgotPasswordMessages.showAlreadyRegisteredStatus = true;
         deferred.reject();
-      }, 500);
-      return deferred;
+      });
+      return deferred.promise;
     }
 
   }

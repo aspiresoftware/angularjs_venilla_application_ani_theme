@@ -12,7 +12,7 @@
               class="form-control input-underline input-lg"
               placeholder="First Name"
               name="firstName"
-              data-ng-model="registerModel.firstName"
+              data-ng-model="registerModel.firstname"
               required>
             </div>
             <div class="form-group">
@@ -20,7 +20,19 @@
               class="form-control input-underline input-lg"
               placeholder="Last Name"
               name="lastName"
-              data-ng-model="registerModel.lastName"
+              data-ng-model="registerModel.lastname"
+              required>
+            </div>
+            <div class="form-group">
+              <input type="text"
+              class="form-control
+              input-underline
+              input-lg"
+              placeholder="User Name"
+              name="username"
+              uib-popover-html="htmlPopover"
+              popover-is-open="popoverIsOpen"
+              data-ng-model="registerModel.username"
               required>
             </div>
             <div class="form-group">
@@ -29,9 +41,26 @@
               input-underline
               input-lg"
               placeholder="Email"
-              name="username"
-              data-ng-model="registerModel.username"
+              name="email"
+              data-ng-model="registerModel.email"
               required>
+            </div>
+            <div class="form-group">
+              <span class="input-group-btn datepicket-theme-button">
+                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+              <input type="text"
+               class="form-control
+              input-underline
+              input-lg"
+              placeholder="Birthday"
+               uib-datepicker-popup="{{format}}"
+               data-ng-model="registerModel.dob"
+               is-open="popup1.opened"
+               datepicker-options="dateOptions"
+               ng-required="true"
+               close-text="Close"
+               alt-input-formats="altInputFormats"/>
             </div>
             <div class="form-group">
               <input type="password"
@@ -43,22 +72,6 @@
               placeholder="Password"
               required>
             </div>
-            <!-- <div class="form-group">
-              <input type="password"
-              class="form-control
-              input-underline
-              input-lg"
-              name="confirmPassword"
-              data-ng-model="registerModel.confirmPassword"
-              placeholder="Repeat Password"
-              compare-to="registerModel.password"
-              required>
-              <div
-              ng-messages="registerForm.confirmPassword.$error"
-              ng-if="registerForm.confirmPassword.$dirty">
-                 <div ng-messages-include="app/common/html/messages.html"></div>
-                                         </div>
-            </div> -->
           </div>
           <button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login" progress-button="registerUser()">
               Register

@@ -39,10 +39,12 @@
     }
 
     function loginSuccess (result) {
-      $scope.user.accessToken = result.accessToken;
-      $scope.user.refreshToken = result.refreshToken;
-      $scope.user.expireDate = result.expireDate;
-      $scope.user.status = result.status;
+      $scope.user = result.user;
+      $scope.user.accessToken = result.auth.accessToken;
+      $scope.user.refreshToken = result.auth.refreshToken;
+      $scope.user.expireDate = result.auth.expireDate;
+      $scope.user.rolename = result.auth.rolename;
+      // $scope.user.status = result.status;
       //Create a new user session
       Session.create($scope.user);
       $state.go('dashboard');

@@ -53,6 +53,11 @@
       tokens[APPLICATION.accessToken] = user.accessToken;
       tokens[APPLICATION.refreshToken] = user.refreshToken;
       data[APPLICATION.username] = user.username;
+      data[APPLICATION.email] = user.email;
+      data[APPLICATION.rolename] = user.rolename;
+      data[APPLICATION.firstname] = user.firstname;
+      data[APPLICATION.lastname] = user.lastname;
+      data[APPLICATION.id] = user.id;
 
       storage.auth.update(tokens);
       storage.data.update(data);

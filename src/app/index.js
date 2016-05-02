@@ -7,6 +7,7 @@
     'ui.router',
     'angular-cache',
     'ngAnimate',
+    'ui.bootstrap',
     'ngMessages',
     'angular-progress-button-styles'
   ]);

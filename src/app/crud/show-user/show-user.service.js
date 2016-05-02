@@ -31,8 +31,8 @@
 
     return showUserService;
 
-    function getUsers () {
-      return DelegatorService.get(urls.getUsersUrl);
+    function getUsers (page) {
+      return DelegatorService.get(urls.getUsersUrl+'?page='+page);
     }
 
     function updateUser (params, updateUserModel) {

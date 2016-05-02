@@ -7,11 +7,14 @@
   /* @ngInject */
   function Register () {
     return {
-      'firstName': '',
-      'lastName': '',
+      'firstname': '',
+      'lastname': '',
       'username': '',
+      'email': '',
       'password': '',
-      'confirmPassword': ''
+      'dob': '',
+      'rolename': 'user',
+
     };
   }
 })();

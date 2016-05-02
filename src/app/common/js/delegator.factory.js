@@ -37,7 +37,7 @@
       /*
       Set header in methods which will come inside config
        */
-      return $resource(config.url, null,  {
+      return $resource(config.url, config.params,  {
         GET: {
           method: 'GET',
           headers: {
@@ -189,11 +189,11 @@
 
     function get(url, params, customConfig) {
       //Manage own caching while using the $http service
-      return http(buildShortcutConfig('GET', url, params, customConfig));
+      return http(buildShortcutConfig('GET', url, params,null ,customConfig));
     }
 
-    function post(url, params, customConfig) {
-      return http(buildShortcutConfig('POST', url, params, customConfig));
+    function post(url, params, data, customConfig) {
+      return http(buildShortcutConfig('POST', url, params, data, customConfig));
     }
 
     function put(url, params, data, customConfig) {
@@ -204,7 +204,7 @@
       return http(buildShortcutConfig('DELETE', url, params, customConfig));
     }
 
-    function buildShortcutConfig(method, url, data, customConfig) {
+    function buildShortcutConfig(method, url, params, data, customConfig) {
       var config = angular.extend({}, customConfig || {});
 
       config.method = method;
@@ -214,9 +214,9 @@
         data = Utility.pruneEmpty(data);
 
         config.data   = data || {};
-        if (method === 'PUT') {
-          config.params = data || {};
-        }
+        // if (method === 'PUT') {
+        config.params = params || {};
+        // }
       } else {
         config.params = data || {};
       }

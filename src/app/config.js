@@ -3,19 +3,26 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    host: 'http://192.168.1.12:3000/api/v1',
+    // host: 'http://192.168.1.12:3000/api/v1',
     // host: 'http://192.168.1.12:3002/api/v1',
+    host: 'http://192.168.1.12:8080/api/v1',
     // host: 'http://192.168.1.30:3000/api/v1',
     username: 'username',
     cache: 'appCache',
+    email: 'email',
+    rolename: 'rolename',
+    firstname: 'firstname',
+    lastname: 'lastname',
     paramCache: 'appParamCache',
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
+    id: 'id',
     sessionName: 'myAppSession'
   })
   .constant('REST_URL', {
     login: '/authenticate',
-    changePassword: '/change/password',
+    changePassword: '/changepassword/:id',
+    forgotPassword: '/forgotpassword',
     'registerUser': '/user',
     'getUsers':'/users',
     'updateUser':'/user/:id',

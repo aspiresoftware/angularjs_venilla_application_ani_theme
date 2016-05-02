@@ -31,7 +31,7 @@
     return loginService;
 
     function authentication (user) {
-      return DelegatorService.post(urls.loginUrl, user);
+      return DelegatorService.post(urls.loginUrl,null, user);
     }
 
     function refreshToken(refreshTokenValue) {
