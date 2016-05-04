@@ -9,7 +9,11 @@
 
      function stateChangeStart(event,
       toState){
-      if (toState.authenticate && !Session.isLoggedIn){
+
+      if(toState && toState.name === 'login' && Session.isLoggedIn) {
+        $state.go('overview');
+        event.preventDefault();
+      } else if (toState.authenticate && !Session.isLoggedIn){
         $state.go('login');
         event.preventDefault();
       }

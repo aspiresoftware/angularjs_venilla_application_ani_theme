@@ -18,7 +18,7 @@ angular.module('nd')
    Register,
    RegisterUserService,
    lodash,
-
+   ALERT_MESSAGE,
    modelFactory) {
 
     //Model for register
@@ -28,6 +28,7 @@ angular.module('nd')
     $scope.registerUser = registerUser;
     $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">  Username already taken!! </b>');
     $scope.popoverIsOpen = false;
+    $scope.ALERT_MESSAGE = ALERT_MESSAGE;
 
     //TODO: handle the already logged in users
     function registerUser() {

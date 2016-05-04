@@ -7,8 +7,8 @@
   /* @ngInject */
   function EditUser () {
     return {
-      'firstName'  : '',
-      'lastName'   : '',
+      'firstname'  : '',
+      'lastname'   : '',
       'isActivate': false
     };
   }

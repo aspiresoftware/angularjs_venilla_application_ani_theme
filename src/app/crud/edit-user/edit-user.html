@@ -1,9 +1,11 @@
-<!--  <div  class="alert alert-success" ng-repeat="(id, notification) in growlNotifications">
- 	{{notification}}
- </div> -->
+ 
+
 
  <div class="conter-wrapper ng-scope" ng-animate="'animate'">
- 	<div class="col-md-12">
+ <div class="col-md-12">
+	  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+ </div>
+	 	<div class="col-md-12">
  		<div class="panel panel-info">
  			<div class="panel-heading">
  				<h3 class="panel-title">
@@ -22,7 +24,7 @@
  							name="firstName"
  							id="firstName"
  							required
- 							data-ng-model="editUserModel.firstName"
+ 							data-ng-model="editUserModel.firstname"
  							placeholder="First Name">
  								<div ng-messages="editUserForm.firstName.$error" ng-if="editUserForm.firstName.$dirty">
  									<div ng-messages-include="app/common/html/messages.html"></div>
@@ -39,7 +41,7 @@
 	 							name="lastName"
 	 							id="lastName"
 	 							required
- 								data-ng-model="editUserModel.lastName"
+ 								data-ng-model="editUserModel.lastname"
  								placeholder="Last Name">
  								<div ng-messages="editUserForm.lastName.$error" ng-if="editUserForm.lastName.$dirty">
  									<div ng-messages-include="app/common/html/messages.html"></div>

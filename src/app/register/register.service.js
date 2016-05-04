@@ -28,7 +28,7 @@
     return registerUserService;
 
     function registerUser (registerUserModel) {
-      return DelegatorService.post(urls.registerUserUrl, registerUserModel);
+      return DelegatorService.post(urls.registerUserUrl, null, registerUserModel);
     }
   }
 })();

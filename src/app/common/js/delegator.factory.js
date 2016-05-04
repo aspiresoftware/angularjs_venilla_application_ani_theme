@@ -63,7 +63,7 @@
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': config.headers.Authorization,
+            'Authorization': config.headers.Authorization
           }
         },
         PUT: {
@@ -155,6 +155,7 @@
 
       function finalize(result) {
         console.log(result);
+
         if (runningRequests[requestId]) {
           delete runningRequests[requestId];
         } else {
@@ -217,8 +218,10 @@
         // if (method === 'PUT') {
         config.params = params || {};
         // }
+      } else if (method === 'DELETE'){
+        config.params = params || {};
       } else {
-        config.params = data || {};
+        config.params = params || {};
       }
 
       return config;

@@ -55,7 +55,7 @@
     }
 
     function onRefreshSuccess(result) {
-      var tokenData = result.data;
+      var tokenData = result;
       $log.debug('Successfully got new access token');
 
       Session.updateAuth(tokenData);

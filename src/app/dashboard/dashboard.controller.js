@@ -10,13 +10,15 @@
 angular.module('nd')
   .controller('DashboardCtrl', function($scope,
    $state,
+   LoginService,
    Session) {
 
     $scope.$state = $state;
     $scope.logout = logout;
 
     function logout() {
-        Session.logout();
+      LoginService.logout().then(angular.noop,angular.noop);
+      Session.logout();
     }
 
   });

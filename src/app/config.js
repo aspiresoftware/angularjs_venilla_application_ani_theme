@@ -3,9 +3,9 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    // host: 'http://192.168.1.12:3000/api/v1',
+    host: 'http://192.168.1.12:3000/api/v1',
     // host: 'http://192.168.1.12:3002/api/v1',
-    host: 'http://192.168.1.12:8080/api/v1',
+    // host: 'http://192.168.1.12:8080/api/v1',
     // host: 'http://192.168.1.30:3000/api/v1',
     username: 'username',
     cache: 'appCache',
@@ -25,6 +25,8 @@
     forgotPassword: '/forgotpassword',
     'registerUser': '/user',
     'getUsers':'/users',
+    'getUser': '/user/:id',
+    'logout':'/logout',
     'updateUser':'/user/:id',
     'deleteUser':'/user/:id'
   })
@@ -104,6 +106,8 @@
       ' Please log in to add this child to your existing account.'
   })
   .constant('ALERT_MESSAGE', {
-    'deactivatedUserSuccessfully':'Succefully deactivated user '
+    'deactivatedUserSuccessfully':'Successfully deactivated user ',
+    'usernameAlreadyExists':'User name already exists',
+    passwordUpdatedSuccessfully:'Password Updated successfully'
    });
 })();

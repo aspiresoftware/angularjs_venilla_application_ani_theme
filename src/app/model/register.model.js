@@ -13,8 +13,7 @@
       'email': '',
       'password': '',
       'dob': '',
-      'rolename': 'user',
-
+      'rolename': 'user'
     };
   }
 })();

@@ -37,11 +37,23 @@
       }
 
       function getUsersSuccess(data) {
-        $scope.usersList   = data.users;
-        $scope.totalItems  = data.pages * data.users.length;
-        $scope.currentPage = data.currentPage;
-        $scope.itemsPerPage= data.users.length;
-        console.log(data + 'success');
+		//TODO:Solve data promise issue:after handling 419 response, getting empty data
+        try {
+            if(data.$promise) {
+              data.$promise.then(function(data) {
+                debugger;
+              },function(error) {
+                debugger;
+              })
+            }
+            $scope.usersList    = data.users;
+            $scope.totalItems   = data.pages * data.users.length;
+            $scope.currentPage  = data.currentPage;
+            $scope.itemsPerPage = data.users.length;
+            console.log(data + 'success');
+        } catch(e) {
+          debugger;
+        }
       }
 
       function failure(error) {
@@ -57,7 +69,7 @@
         function deactivateUserSuccess(data) {
           $scope.usersList[index] = data;
            i += index;
-          $scope.growlNotifications[i] = ALERT_MESSAGE.deactivatedUserSuccessfully + data.firstName;
+          $scope.growlNotifications[i] = ALERT_MESSAGE.deactivatedUserSuccessfully + data.firstname;
           $timeout(function(){
             delete $scope.growlNotifications[i];
           }, 2000);

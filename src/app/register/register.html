@@ -29,11 +29,13 @@
               input-underline
               input-lg"
               placeholder="User Name"
+              data-ng-change="popoverIsOpen = false"
               name="username"
-              uib-popover-html="htmlPopover"
-              popover-is-open="popoverIsOpen"
               data-ng-model="registerModel.username"
               required>
+              <div data-ng-if="popoverIsOpen" class="text-left text-red" >
+                {{ALERT_MESSAGE.usernameAlreadyExists}}
+              </div>
             </div>
             <div class="form-group">
               <input type="email"
@@ -45,7 +47,7 @@
               data-ng-model="registerModel.email"
               required>
             </div>
-            <div class="form-group">
+            <div class="form-group datepicker-color">
               <span class="input-group-btn datepicket-theme-button">
                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>

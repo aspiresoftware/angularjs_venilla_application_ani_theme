@@ -25,7 +25,8 @@
       },
       {
         authentication: authentication,
-        refreshToken: refreshToken
+        refreshToken: refreshToken,
+        logout: logout
       });
 
     return loginService;
@@ -35,10 +36,14 @@
     }
 
     function refreshToken(refreshTokenValue) {
-      var params  = {grantType: 'accessToken', refreshToken: refreshTokenValue};
+      var data  = {grantType: 'accessToken', refreshToken: refreshTokenValue};
       var config  = {noDelay: true};
 
-      return DelegatorService.post(REST_URL.login, params, config);
+      return DelegatorService.post(REST_URL.login, null, data, config);
+    }
+
+    function logout() {
+      return DelegatorService.remove(REST_URL.logout, null, null);
     }
   }
 })();

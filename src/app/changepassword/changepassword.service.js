@@ -28,7 +28,7 @@
     return changePasswordService;
 
     function changePassword (params, changePasswordModel) {
-      return DelegatorService.post(urls.changePasswordUrl, params, changePasswordModel);
+      return DelegatorService.put(urls.changePasswordUrl, params, changePasswordModel);
     }
   }
 })();

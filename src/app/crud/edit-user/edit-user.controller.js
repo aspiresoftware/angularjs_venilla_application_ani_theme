@@ -17,15 +17,25 @@
       $scope.editUserModel = modelFactory.create('editUserModel', EditUser);
 
       //Initially retrieve the users list
-      $scope.getUsers = getUsers();
-      $scope.editUser = editUser;
+      $scope.getUsers = getUser();
 
-      function getUsers() {
-        ShowUserService.getUsers().then(getUsersSuccess,failure);
+      //function Declaration
+      $scope.editUser   = editUser;
+      $scope.closeAlert = closeAlert;
+
+      //Variable Declaration
+      $scope.alerts = [];
+
+      function getUser() {
+        var params = {};
+        params.id = $stateParams.id;
+        ShowUserService.getUser(params).then(getUserSuccess,failure);
       }
 
-      function getUsersSuccess(data) {
-        $scope.editUserModel = getSpecificUser(data.users, $stateParams.id);
+      function getUserSuccess(data) {
+        $scope.editUserModel.firstname = data.firstname;
+        $scope.editUserModel.lastname = data.lastname;
+        $scope.editUserModel.isActiavte = data.isActiavte;
         console.log(data + 'success');
       }
 
@@ -33,23 +43,26 @@
         console.log(JSON.stringify(error) + 'failure');
       }
 
-      function getSpecificUser(users, id) {
-        var specificUser;
-        specificUser = users.filter(function (user) {
-          return String(user.id) === id;
-        });
-        if (specificUser.length) {
-          return specificUser[0];
-        }
-      }
 
       function editUser() {
         var params = {};
-        params.id = $scope.editUserModel.id;
+        params.id = $stateParams.id;
         ShowUserService.updateUser(params, $scope.editUserModel).then(editUserSuccess, failure);
         function editUserSuccess(data) {
-          debugger;
+          $scope.alerts.push(
+             { type: 'success',
+              msg: 'User ' + data.firstname + ' Updated succcessfully'
+            }
+          );
+        $scope.editUserModel.firstname = data.firstname;
+        $scope.editUserModel.lastname = data.lastname;
+        $scope.editUserModel.isActiavte = data.isActiavte;
         }
+      }
+
+
+      function closeAlert(index) {
+        $scope.alerts.splice(index, 1);
       }
   }
 })();
